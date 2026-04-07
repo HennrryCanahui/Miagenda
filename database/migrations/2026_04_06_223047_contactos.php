@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('email')->nullable();
-            $table->string('telefono')->nullable();
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
             $table->string('direccion')->nullable();
             $table->string('notas')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('foto_path')->nullable();
             $table->timestamps();
         });
     }
