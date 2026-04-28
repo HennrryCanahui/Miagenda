@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Role; // Asegúrate de que el modelo se llame Role
+use App\Models\Rol;
 
 class RoleSeeder extends Seeder
 {
@@ -12,15 +12,14 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Insertar los roles requeridos por el PDF del proyecto final
         $roles = [
-            ['nombre_rol' => 'Administrador'],
-            ['nombre_rol' => 'Usuario estándar'],
+            ['nombre' => 'Administrador'],
+            ['nombre' => 'Usuario estándar'],
         ];
 
         foreach ($roles as $role) {
-            Role::updateOrCreate(
-                ['nombre_rol' => $role['nombre_rol']],
+            Rol::updateOrCreate(
+                ['nombre' => $role['nombre']],
                 $role
             );
         }

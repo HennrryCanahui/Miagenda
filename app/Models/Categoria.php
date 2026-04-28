@@ -10,11 +10,17 @@ class Categoria extends Model
         'usuario_id',
         'nombre',
         'color',
+        'icono',
     ];
 
     public function usuario()
     {
         return $this->belongsTo(User::class,'usuario_id');
+    }
+
+    public function contactos()
+    {
+        return $this->hasMany(Contacto::class,'categoria_id');
     }
 }
 

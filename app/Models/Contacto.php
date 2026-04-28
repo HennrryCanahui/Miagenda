@@ -11,17 +11,24 @@ class Contacto extends Model
         'nombres',
         'apellidos',
         'email',
-        'telefono',
+        'categoria_id',
         'direccion',
-        'ciudad',
-        'estado',
-        'codigo_postal',
-        'pais',
-        'user_id',
+        'notas',
+        'foto_path'
     ];
 
     public function usuario()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'usuario_id');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class,'categoria_id');
+    }
+
+    public function telefonos()
+    {
+        return $this->hasMany(Telefono::class,'contacto_id');
     }
 }

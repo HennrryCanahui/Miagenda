@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Telefono extends Model
 {
     protected $fillable = [
-        'numero',
-        'tipo',
         'contacto_id',
-        'created_at',
-        'updated_at',
+        'tipo',
+        'codigo_pais',
+        'numero',
     ];
+
+    public function contacto()
+    {
+        return $this->belongsTo(Contacto::class,'contacto_id');
+    }
 }

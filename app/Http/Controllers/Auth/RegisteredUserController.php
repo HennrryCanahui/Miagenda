@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -41,20 +42,27 @@ class RegisteredUserController extends Controller
                             ->symbols()
                             ->uncompromised()],
             'pregunta_secreta' => ['required', 'string', 'max:255'],
+            'pregunta_personalizada' => ['required_if:pregunta_secreta,personalizado', 'nullable', 'string', 'max:255'],
             'respuesta_secreta' => ['required', 'string', 'max:255'],
         ]);
 
-        // Intentar obtener el rol por defecto
         $rol = \Illuminate\Support\Facades\DB::table('roles')->where('nombre', 'Usuario estándar')->first();
-        $rol_id = $rol ? $rol->id : 2; // Por defecto asignamos el 2 si no existe
+        $rol_id = $rol ? $rol->id : 2;
+
+        $preguntaRaw = $request->pregunta_secreta === 'personalizado' 
+            ? $request->pregunta_personalizada 
+            : $request->pregunta_secreta;
+        
+        $pregunta = strtolower($preguntaRaw);
+        $respuesta = strtolower($request->respuesta_secreta);
 
         $user = User::create([
             'nombres' => $request->nombres,
             'apellidos' => $request->apellidos,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'pregunta_secreta' => $request->pregunta_secreta,
-            'respuesta_secreta' => Hash::make($request->respuesta_secreta),
+            'pregunta_secreta' => Crypt::encryptString($pregunta),
+            'respuesta_secreta' => Hash::make($respuesta),
             'rol_id' => $rol_id,
             'estado' => true,
         ]);
