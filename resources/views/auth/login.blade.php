@@ -36,18 +36,18 @@
                 </div>
 
                 <!-- Validation Errors -->
-                @if ($errors->any())
-                    <div class="mb-6 p-4 bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500 rounded-r-xl" role="alert">
-                        <p class="text-sm font-semibold text-red-800 dark:text-red-300">Revisa los datos e intenta de nuevo:</p>
-                        <ul class="mt-3 text-xs text-red-700 dark:text-red-400 list-disc list-inside space-y-1">
+                <div id="error-container" class="{{ $errors->any() ? '' : 'hidden' }} mb-6 p-4 bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500 rounded-r-xl" role="alert">
+                    <p class="text-sm font-semibold text-red-800 dark:text-red-300">Revisa los datos e intenta de nuevo:</p>
+                    <ul id="error-list" class="mt-3 text-xs text-red-700 dark:text-red-400 list-disc list-inside space-y-1">
+                        @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
-                        </ul>
-                    </div>
-                @endif
+                        @endif
+                    </ul>
+                </div>
 
-                <form action="{{ route('login') }}" method="POST" class="space-y-5 flex-1">
+                <form id="login-form" action="{{ route('login') }}" method="POST" class="space-y-5 flex-1">
                     @csrf
 
                     <!-- Email Input -->
@@ -127,8 +127,16 @@
                         </label>
                     </div>
 
+                    <!-- Lockout Message -->
+                    <div id="lockout-message" class="hidden mb-4 p-4 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-50 rounded-r-xl" role="alert">
+                        <p class="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                            Demasiados intentos fallidos. Por favor, espera <span id="lockout-timer">60</span> segundos para intentar de nuevo.
+                        </p>
+                    </div>
+
                     <!-- Login Button -->
                     <button 
+                        id="submit-btn"
                         type="submit" 
                         class="w-full mt-6 py-3.5 px-4 rounded-2xl font-bold text-white transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-slate-800 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 dark:from-indigo-600 dark:to-blue-600 dark:hover:from-indigo-700 dark:hover:to-blue-700 focus:ring-indigo-500 shadow-lg shadow-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/40"
                     >
@@ -163,5 +171,138 @@
             toggleIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>';
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('login-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const lockoutMessage = document.getElementById('lockout-message');
+        const lockoutTimer = document.getElementById('lockout-timer');
+        
+        let attempts = parseInt(localStorage.getItem('loginAttempts') || '0');
+        let lockoutUntil = parseInt(localStorage.getItem('lockoutUntil') || '0');
+        
+        function updateLockout() {
+            const now = Date.now();
+            if (lockoutUntil > now) {
+                const remaining = Math.ceil((lockoutUntil - now) / 1000);
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                lockoutMessage.classList.remove('hidden');
+                lockoutTimer.textContent = remaining;
+                
+                setTimeout(updateLockout, 1000);
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                lockoutMessage.classList.add('hidden');
+                if (lockoutUntil > 0) {
+                    localStorage.removeItem('lockoutUntil');
+                    localStorage.setItem('loginAttempts', '0');
+                }
+            }
+        }
+
+        // Check if we are currently locked out
+        updateLockout();
+
+        function showErrors(errors) {
+            const errorContainer = document.getElementById('error-container');
+            const errorList = document.getElementById('error-list');
+            errorList.innerHTML = '';
+            
+            if (typeof errors === 'string') {
+                const li = document.createElement('li');
+                li.textContent = errors;
+                errorList.appendChild(li);
+            } else {
+                Object.values(errors).forEach(messages => {
+                    (Array.isArray(messages) ? messages : [messages]).forEach(msg => {
+                        const li = document.createElement('li');
+                        li.textContent = msg;
+                        errorList.appendChild(li);
+                    });
+                });
+            }
+            
+            errorContainer.classList.remove('hidden');
+        }
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (lockoutUntil > Date.now()) return;
+
+            // Reset UI
+            document.getElementById('error-container').classList.add('hidden');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-wait');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Verificando...';
+
+            const formData = new FormData(loginForm);
+            
+            try {
+                const response = await fetch(loginForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    }
+                });
+
+                if (response.ok) {
+                    // Success - Clear attempts
+                    localStorage.setItem('loginAttempts', '0');
+                    
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        window.location.href = data.redirect || '{{ route("welcome") }}';
+                    } else {
+                        // If it's HTML, it means we were redirected successfully
+                        window.location.href = response.url || '{{ route("welcome") }}';
+                    }
+                } else {
+                    // Error - 422 or other
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        showErrors(data.errors || data.message || 'Error al iniciar sesión');
+                    } else {
+                        showErrors('Error en el servidor. Por favor intenta de nuevo.');
+                    }
+                    
+                    attempts++;
+                    localStorage.setItem('loginAttempts', attempts);
+                    
+                    if (attempts >= 3) {
+                        const lockoutTime = Date.now() + 60000; // 1 minuto
+                        localStorage.setItem('lockoutUntil', lockoutTime);
+                        lockoutUntil = lockoutTime;
+                        updateLockout();
+                    }
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                if (error instanceof TypeError) {
+                    showErrors('Error de conexión. Por favor revisa tu internet.');
+                } else if (error instanceof SyntaxError) {
+                    // This might happen if success redirect returns HTML and we tried to parse it as JSON
+                    // But with the Content-Type check above, this shouldn't happen often.
+                    window.location.href = '{{ route("welcome") }}';
+                } else {
+                    showErrors('Ocurrió un error inesperado.');
+                }
+            } finally {
+                if (lockoutUntil <= Date.now()) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-50', 'cursor-wait');
+                    submitBtn.textContent = originalText;
+                }
+            }
+        });
+    });
 </script>
 @endsection
