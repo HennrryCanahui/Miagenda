@@ -259,10 +259,10 @@
                     const contentType = response.headers.get("content-type");
                     if (contentType && contentType.includes("application/json")) {
                         const data = await response.json();
-                        window.location.href = data.redirect || '{{ route("welcome") }}';
+                        window.location.href = data.redirect || '{{ route("dashboard") }}';
                     } else {
                         // If it's HTML, it means we were redirected successfully
-                        window.location.href = response.url || '{{ route("welcome") }}';
+                        window.location.href = response.url || '{{ route("dashboard") }}';
                     }
                 } else {
                     // Error - 422 or other
@@ -291,7 +291,7 @@
                 } else if (error instanceof SyntaxError) {
                     // This might happen if success redirect returns HTML and we tried to parse it as JSON
                     // But with the Content-Type check above, this shouldn't happen often.
-                    window.location.href = '{{ route("welcome") }}';
+                    window.location.href = '{{ route("dashboard") }}';
                 } else {
                     showErrors('Ocurrió un error inesperado.');
                 }

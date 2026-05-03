@@ -60,4 +60,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Determine if the user has the Administrator role.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->rol && $this->rol->nombre === 'Administrador';
+    }
+
+    /**
+     * Determine if the user has the Standard User role.
+     *
+     * @return bool
+     */
+    public function isStandard(): bool
+    {
+        return $this->rol && $this->rol->nombre === 'Usuario estándar';
+    }
 }

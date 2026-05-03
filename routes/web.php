@@ -4,13 +4,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if (auth()->check()) {
-        return redirect()->route('welcome');
+        return redirect()->route('dashboard');
     }
     return redirect()->route('login');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->middleware(['auth'])->name('welcome');
+use App\Http\Controllers\DashboardController;
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+// Rutas temporales (Mockups) para la demostración de la Agenda
+Route::middleware(['auth'])->group(function () {
+    
+    // Contactos
+    Route::view('/contacts', 'contacts.index')->name('contacts.index');
+    Route::view('/contacts/create', 'contacts.create')->name('contacts.create');
+    // Las rutas de edit/delete usarán lógica más adelante
+    
+    // Categorías
+    Route::view('/categories', 'categories.index')->name('categories.index');
+    
+    // Usuarios (Solo Administradores)
+    Route::view('/users', 'users.index')->name('users.index')->middleware(['admin']);
+    
+    // Ayuda
+    Route::view('/help/about', 'help.about')->name('help.about');
+});
 
 require __DIR__.'/auth.php';
