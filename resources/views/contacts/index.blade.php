@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.sidebar')
 
 @section('title', 'Contactos')
 @section('header', 'Directorio de Contactos')

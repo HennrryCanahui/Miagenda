@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.sidebar')
 
 @section('title', 'Inicio')
 @section('header', 'Bienvenido a tu Agenda')

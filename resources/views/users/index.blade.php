@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.sidebar')
 
 @section('title', 'Mantenimiento de Usuarios')
 @section('header', 'Usuarios del Sistema')

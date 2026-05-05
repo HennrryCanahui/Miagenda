@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.sidebar')
 
 @section('title', 'Acerca de')
 @section('header', 'Ayuda y Soporte')
