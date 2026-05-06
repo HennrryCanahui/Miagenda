@@ -22,7 +22,10 @@ Route::middleware(['auth'])->group(function () {
     // Las rutas de edit/delete usarán lógica más adelante
     
     // Categorías
-    Route::view('/categories', 'categories.index')->name('categories.index');
+    Route::get('/categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
+    Route::post('/categorias', [App\Http\Controllers\CategoriaController::class, 'store'])->name('categorias.store');
+    Route::put('/categorias/{categoria}', [App\Http\Controllers\CategoriaController::class, 'update'])->name('categorias.update');
+    Route::delete('/categorias/{categoria}', [App\Http\Controllers\CategoriaController::class, 'destroy'])->name('categorias.destroy');
     
     // Usuarios (Solo Administradores)
     Route::view('/users', 'users.index')->name('users.index')->middleware(['admin']);

@@ -21,7 +21,7 @@
                                 Comienza a organizar tu tiempo eficientemente. Tu productividad mejorará desde el primer día.
                             </p>
                         </div>
-
+<!--
                         <div class="space-y-4 pt-4">
                             <div class="flex flex-col sm:flex-row lg:flex-col items-center lg:items-start gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
                                 <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center flex-shrink-0 border border-indigo-500/30">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-
+-->
                         <div class="pt-8 border-t border-white/10">
                             <p class="text-sm text-blue-100/60 mb-3 text-center lg:text-left">¿Ya eres miembro?</p>
                             <div class="flex justify-center lg:justify-start">
