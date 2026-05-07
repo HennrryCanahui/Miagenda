@@ -17,8 +17,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::middleware(['auth'])->group(function () {
     
     // Contactos
-    Route::view('/contacts', 'contacts.index')->name('contacts.index');
-    Route::view('/contacts/create', 'contacts.create')->name('contacts.create');
+    Route::get('/contacts', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/create', [App\Http\Controllers\ContactoController::class, 'create'])->name('contacts.create');
+    Route::post('/contacts', [App\Http\Controllers\ContactoController::class, 'store'])->name('contacts.store');
     // Las rutas de edit/delete usarán lógica más adelante
     
     // Categorías
@@ -26,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/categorias', [App\Http\Controllers\CategoriaController::class, 'store'])->name('categorias.store');
     Route::put('/categorias/{categoria}', [App\Http\Controllers\CategoriaController::class, 'update'])->name('categorias.update');
     Route::delete('/categorias/{categoria}', [App\Http\Controllers\CategoriaController::class, 'destroy'])->name('categorias.destroy');
+    Route::get('/categorias/{categoria}/contactos', [App\Http\Controllers\CategoriaController::class, 'getContactos'])->name('categorias.contactos');
     
     // Usuarios (Solo Administradores)
     Route::view('/users', 'users.index')->name('users.index')->middleware(['admin']);
