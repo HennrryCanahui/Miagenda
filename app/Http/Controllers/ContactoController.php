@@ -64,17 +64,77 @@ class ContactoController extends Controller
             'apellidos' => 'required|string|max:255',
             'email' => 'nullable|email',
             'categoria_id' => 'required|exists:categorias,id',
+            'telefono' => 'nullable|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['telefono']);
         $data['usuario_id'] = Auth::id();
 
         if ($request->hasFile('foto')) {
             $data['foto_path'] = $request->file('foto')->store('contactos', 'public');
         }
 
-        Contacto::create($data);
+        $contacto = Contacto::create($data);
+
+        if ($request->filled('telefono')) {
+            \App\Models\Telefono::create([
+                'contacto_id' => $contacto->id,
+                'numero' => $request->telefono,
+                'tipo' => 'Principal',
+                'codigo_pais' => '+502', // Default based on placeholder
+            ]);
+        }
 
         return redirect()->route('contacts.index')->with('success', 'Contacto creado con éxito.');
+    }
+    public function edit(Contacto $contacto)
+    {
+        if ($contacto->usuario_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $categorias = Categoria::where(function($q) {
+            $q->where('usuario_id', Auth::id())
+              ->orWhere('es_predefinida', true);
+        })->get();
+
+        return view('contacts.edit', compact('contacto', 'categorias'));
+    }
+
+    public function update(Request $request, Contacto $contacto)
+    {
+        if ($contacto->usuario_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $request->validate([
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'email' => 'nullable|email',
+            'categoria_id' => 'required|exists:categorias,id',
+            'telefono' => 'nullable|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|max:2048',
+        ]);
+
+        $data = $request->except(['telefono']);
+
+        if ($request->hasFile('foto')) {
+            $data['foto_path'] = $request->file('foto')->store('contactos', 'public');
+        }
+
+        $contacto->update($data);
+
+        if ($request->filled('telefono')) {
+            $telefono = \App\Models\Telefono::firstOrNew(['contacto_id' => $contacto->id]);
+            $telefono->numero = $request->telefono;
+            $telefono->tipo = 'Principal';
+            $telefono->codigo_pais = '+502';
+            $telefono->save();
+        }
+
+        return redirect()->route('contacts.index')->with('success', 'Contacto actualizado con éxito.');
     }
 }

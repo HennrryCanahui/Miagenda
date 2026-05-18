@@ -20,7 +20,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contacts', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacts.index');
     Route::get('/contacts/create', [App\Http\Controllers\ContactoController::class, 'create'])->name('contacts.create');
     Route::post('/contacts', [App\Http\Controllers\ContactoController::class, 'store'])->name('contacts.store');
-    // Las rutas de edit/delete usarán lógica más adelante
+    Route::get('/contacts/{contacto}/edit', [App\Http\Controllers\ContactoController::class, 'edit'])->name('contacts.edit');
+    Route::put('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'update'])->name('contacts.update');
+    // La ruta de delete usará lógica más adelante
     
     // Categorías
     Route::get('/categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
