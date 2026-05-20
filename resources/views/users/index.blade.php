@@ -31,7 +31,7 @@
 <div class="bg-white/80 backdrop-blur-md dark:bg-slate-800 rounded-3xl shadow-xl shadow-indigo-500/10 dark:shadow-none border border-white/50 dark:border-slate-700 overflow-hidden">
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
-            <thead class="bg-gray-50 dark:bg-slate-800/50">
+            <thead class="bg-gray-50 dark:bg-slate-900/50">
                 <tr>
                     <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Usuario</th>
                     <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Rol</th>

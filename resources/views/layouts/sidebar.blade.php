@@ -112,7 +112,7 @@
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none"></div>
         
         <!-- Header -->
-        <header class="h-16 flex-shrink-0 bg-[#070b13] border-b border-gray-800/40 flex items-center justify-between px-6 z-20 sticky top-0">
+        <header class="h-16 flex-shrink-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 flex items-center justify-between px-6 z-20 sticky top-0">
   
             <div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">@yield('header', 'Dashboard')</h1>
