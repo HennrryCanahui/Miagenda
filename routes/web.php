@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/categorias/{categoria}/contactos', [App\Http\Controllers\CategoriaController::class, 'getContactos'])->name('categorias.contactos');
     
     // Usuarios (Solo Administradores)
-    Route::view('/users', 'users.index')->name('users.index')->middleware(['admin']);
+    Route::resource('users', App\Http\Controllers\UserController::class)->middleware(['admin']);
     
     // Ayuda
     Route::view('/help/about', 'help.about')->name('help.about');

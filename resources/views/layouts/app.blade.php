@@ -10,7 +10,7 @@
         // Tema inicial antes de que cargue Alpine para evitar destellos
         (function() {
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (savedTheme === 'dark' || ((!savedTheme || savedTheme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark');
@@ -35,7 +35,7 @@
         @yield('styles')
     </style>
 </head>
-<body class="font-sans antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 @yield('body_class', 'bg-white dark:bg-slate-950')">
+<body class="font-sans antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 @yield('body_class', 'bg-gray-50 dark:bg-blue-950')">
     
     @yield('layout')
 

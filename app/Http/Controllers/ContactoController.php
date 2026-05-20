@@ -6,6 +6,7 @@ use App\Models\Contacto;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ContactoController extends Controller
 {
@@ -16,7 +17,6 @@ class ContactoController extends Controller
     {
         $query = Contacto::where('usuario_id', Auth::id());
 
-        // Filtrar por búsqueda
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
@@ -26,13 +26,12 @@ class ContactoController extends Controller
             });
         }
 
-        // Filtrar por categoría
         if ($request->filled('categoria_id')) {
             $query->where('categoria_id', $request->categoria_id);
         }
 
         $contactos = $query->with('categoria')->paginate(9);
-        
+
         $categorias = Categoria::where(function($q) {
             $q->where('usuario_id', Auth::id())
               ->orWhere('es_predefinida', true);
@@ -60,13 +59,13 @@ class ContactoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombres' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'nullable|email',
+            'nombres'      => 'required|string|max:255',
+            'apellidos'    => 'required|string|max:255',
+            'email'        => 'nullable|email',
             'categoria_id' => 'required|exists:categorias,id',
-            'telefono' => 'nullable|string|max:255',
-            'direccion' => 'nullable|string|max:255',
-            'foto' => 'nullable|image|max:2048',
+            'telefono'     => 'nullable|string|max:255',
+            'direccion'    => 'nullable|string|max:255',
+            'foto'         => 'nullable|image|max:2048',
         ]);
 
         $data = $request->except(['telefono']);
@@ -81,14 +80,18 @@ class ContactoController extends Controller
         if ($request->filled('telefono')) {
             \App\Models\Telefono::create([
                 'contacto_id' => $contacto->id,
-                'numero' => $request->telefono,
-                'tipo' => 'Principal',
-                'codigo_pais' => '+502', // Default based on placeholder
+                'numero'      => $request->telefono,
+                'tipo'        => 'Principal',
+                'codigo_pais' => '+502',
             ]);
         }
 
         return redirect()->route('contacts.index')->with('success', 'Contacto creado con éxito.');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
@@ -103,6 +106,9 @@ class ContactoController extends Controller
         return view('contacts.edit', compact('contacto', 'categorias'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
@@ -110,18 +116,22 @@ class ContactoController extends Controller
         }
 
         $request->validate([
-            'nombres' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'nullable|email',
+            'nombres'      => 'required|string|max:255',
+            'apellidos'    => 'required|string|max:255',
+            'email'        => 'nullable|email',
             'categoria_id' => 'required|exists:categorias,id',
-            'telefono' => 'nullable|string|max:255',
-            'direccion' => 'nullable|string|max:255',
-            'foto' => 'nullable|image|max:2048',
+            'telefono'     => 'nullable|string|max:255',
+            'direccion'    => 'nullable|string|max:255',
+            'foto'         => 'nullable|image|max:2048',
         ]);
 
         $data = $request->except(['telefono']);
 
         if ($request->hasFile('foto')) {
+            if ($contacto->foto_path && Storage::disk('public')->exists($contacto->foto_path)) {
+                Storage::disk('public')->delete($contacto->foto_path);
+            }
+
             $data['foto_path'] = $request->file('foto')->store('contactos', 'public');
         }
 
@@ -129,12 +139,30 @@ class ContactoController extends Controller
 
         if ($request->filled('telefono')) {
             $telefono = \App\Models\Telefono::firstOrNew(['contacto_id' => $contacto->id]);
-            $telefono->numero = $request->telefono;
-            $telefono->tipo = 'Principal';
+            $telefono->numero      = $request->telefono;
+            $telefono->tipo        = 'Principal';
             $telefono->codigo_pais = '+502';
             $telefono->save();
         }
 
         return redirect()->route('contacts.index')->with('success', 'Contacto actualizado con éxito.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Contacto $contacto)
+    {
+        if ($contacto->usuario_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if ($contacto->foto_path && Storage::disk('public')->exists($contacto->foto_path)) {
+            Storage::disk('public')->delete($contacto->foto_path);
+        }
+
+        $contacto->delete();
+
+        return redirect()->route('contacts.index')->with('success', 'Contacto eliminado con éxito.');
     }
 }

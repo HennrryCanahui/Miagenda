@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-slate-700/50 backdrop-blur-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-blue-900 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-blue-800/50 backdrop-blur-sm">
             
             <!-- Left Panel -->
             <div class="hidden lg:flex lg:flex-col lg:justify-center relative overflow-hidden bg-gradient-to-br from-indigo-900/90 via-blue-900/80 to-slate-900 backdrop-blur-xl border-r border-white/10 p-12 min-h-[500px]">
@@ -58,7 +58,7 @@
                                 required 
                                 autofocus
                                 placeholder="correo@ejemplo.com"
-                                class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-blue-800 border border-gray-300 dark:border-blue-700 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                             >
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         Continuar
                     </button>
 
-                    <div class="pt-6 border-t border-gray-200 dark:border-slate-700 text-center">
+                    <div class="pt-6 border-t border-gray-200 dark:border-blue-800 text-center">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
                             ¿Recordaste tu contraseña? 
                             <a href="{{ route('login') }}" class="font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors ml-1">

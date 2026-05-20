@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="flex items-center justify-center min-h-[80vh] px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-    <div class="w-full max-w-4xl p-10 sm:p-16 text-center bg-white dark:bg-gray-800 rounded-3xl shadow-2xl transition-colors duration-300 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+    <div class="w-full max-w-4xl p-10 sm:p-16 text-center bg-white dark:bg-blue-900 rounded-3xl shadow-2xl transition-colors duration-300 border border-gray-100 dark:border-blue-800 relative overflow-hidden">
         
         <!-- Decoracion de fondo -->
         <div class="absolute top-0 right-0 -tr w-64 h-64 bg-blue-500 opacity-5 dark:opacity-10 rounded-full blur-3xl"></div>

@@ -6,7 +6,7 @@
 @section('content')
 <div class="max-w-3xl mx-auto mt-8">
     
-    <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl shadow-indigo-500/10 dark:shadow-none border border-gray-100 dark:border-slate-700 overflow-hidden relative">
+    <div class="bg-white dark:bg-blue-900 rounded-3xl shadow-2xl shadow-indigo-500/10 dark:shadow-none border border-gray-100 dark:border-blue-800 overflow-hidden relative">
         
         <!-- Header Art / Carátula -->
         <div class="h-48 md:h-64 bg-gradient-to-br from-indigo-900 via-blue-900 to-slate-900 relative overflow-hidden flex items-center justify-center">
@@ -31,19 +31,19 @@
                     <div>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Información del Sistema</h3>
                         <dl class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                            <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
+                            <div class="flex justify-between border-b border-gray-100 dark:border-blue-800 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Versión:</dt>
                                 <dd>1.0.0 (BETA Demo)</dd>
                             </div>
-                            <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
+                            <div class="flex justify-between border-b border-gray-100 dark:border-blue-800 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Framework:</dt>
                                 <dd>Laravel 11.x</dd>
                             </div>
-                            <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
+                            <div class="flex justify-between border-b border-gray-100 dark:border-blue-800 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Estilos:</dt>
                                 <dd>Tailwind CSS 3</dd>
                             </div>
-                            <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
+                            <div class="flex justify-between border-b border-gray-100 dark:border-blue-800 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">SO Soportados:</dt>
                                 <dd>Linux, FreeBSD, Windows, macOS</dd>
                             </div>
@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="mt-10 pt-6 border-t border-gray-100 dark:border-slate-700 text-center">
+            <div class="mt-10 pt-6 border-t border-gray-100 dark:border-blue-800 text-center">
                 <p class="text-xs text-gray-500 dark:text-gray-400">
                     &copy; {{ date('Y') }} MyAgenda. Todos los derechos reservados.<br>
                     Desarrollado como demostración de maquetación y diseño de interfaces.
