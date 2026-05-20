@@ -44,25 +44,25 @@
                 <!-- Nombres -->
                 <div>
                     <label for="nombres" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombres <span class="text-red-500">*</span></label>
-                    <input type="text" name="nombres" id="nombres" value="{{ old('nombres') }}" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <input type="text" name="nombres" id="nombres" value="{{ old('nombres') }}" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                 </div>
                 
                 <!-- Apellidos -->
                 <div>
                     <label for="apellidos" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Apellidos <span class="text-red-500">*</span></label>
-                    <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <input type="text" name="apellidos" id="apellidos" value="{{ old('apellidos') }}" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                 </div>
                 
                 <!-- Email -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Correo Electrónico <span class="text-red-500">*</span></label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                 </div>
                 
                 <!-- Rol -->
                 <div>
                     <label for="rol_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Rol <span class="text-red-500">*</span></label>
-                    <select name="rol_id" id="rol_id" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <select name="rol_id" id="rol_id" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                         <option value="">Selecciona un rol</option>
                         @foreach($roles as $rol)
                             <option value="{{ $rol->id }}" {{ old('rol_id') == $rol->id ? 'selected' : '' }}>{{ $rol->nombre }}</option>
@@ -73,19 +73,19 @@
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Contraseña <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <input type="password" name="password" id="password" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                 </div>
                 
                 <!-- Confirm Password -->
                 <div>
                     <label for="password_confirmation" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirmar Contraseña <span class="text-red-500">*</span></label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <input type="password" name="password_confirmation" id="password_confirmation" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                 </div>
                 
                 <!-- Estado -->
                 <div>
                     <label for="estado" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estado <span class="text-red-500">*</span></label>
-                    <select name="estado" id="estado" required class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                    <select name="estado" id="estado" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                         <option value="1" {{ old('estado', '1') == '1' ? 'selected' : '' }}>Activo</option>
                         <option value="0" {{ old('estado') == '0' ? 'selected' : '' }}>Inactivo</option>
                     </select>
@@ -98,13 +98,13 @@
                     <!-- Pregunta Secreta -->
                     <div>
                         <label for="pregunta_secreta" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pregunta Secreta</label>
-                        <input type="text" name="pregunta_secreta" id="pregunta_secreta" value="{{ old('pregunta_secreta') }}" class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                        <input type="text" name="pregunta_secreta" id="pregunta_secreta" value="{{ old('pregunta_secreta') }}" class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                     </div>
                     
                     <!-- Respuesta Secreta -->
                     <div>
                         <label for="respuesta_secreta" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Respuesta Secreta</label>
-                        <input type="text" name="respuesta_secreta" id="respuesta_secreta" value="{{ old('respuesta_secreta') }}" class="w-full rounded-xl border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 text-gray-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 transition-colors">
+                        <input type="text" name="respuesta_secreta" id="respuesta_secreta" value="{{ old('respuesta_secreta') }}" class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
                     </div>
                 </div>
             </div>

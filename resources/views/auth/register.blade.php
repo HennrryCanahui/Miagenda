@@ -6,7 +6,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-slate-700/50">
             
             <!-- Left Panel - Info Section (Hidden on mobile) -->
-            <div class="lg:flex lg:col-span-2 lg:flex-col lg:justify-center lg:items-center relative overflow-hidden bg-gradient-to-br from-indigo-900/95 via-blue-900/90 to-slate-900 backdrop-blur-xl border-r border-white/10 p-8 sm:p-12 lg:p-16 min-h-[600px]">
+            <div class="hidden lg:flex lg:col-span-2 lg:flex-col lg:justify-center lg:items-center relative overflow-hidden bg-gradient-to-br from-indigo-900/95 via-blue-900/90 to-slate-900 backdrop-blur-xl border-r border-white/10 p-8 sm:p-12 lg:p-16 min-h-[600px]">
                 <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
                 <div class="absolute bottom-0 left-0 w-80 h-80 bg-red-500/10 rounded-full blur-3xl -ml-40 -mb-40"></div>
                 
@@ -101,7 +101,7 @@
                                 required 
                                 autofocus
                                 placeholder="Juan"
-                                class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                             >
                         </div>
 
@@ -117,7 +117,7 @@
                                 value="{{ old('apellidos') }}" 
                                 required
                                 placeholder="Pérez"
-                                class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                             >
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                 value="{{ old('email') }}" 
                                 required
                                 placeholder="correo@ejemplo.com"
-                                class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                             >
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                                     type="password" 
                                     required
                                     placeholder="••••••••"
-                                    class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                    class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                                     type="password" 
                                     required
                                     placeholder="••••••••"
-                                    class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                    class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
                             </div>
                         </div>
@@ -207,7 +207,7 @@
                                     name="pregunta_secreta" 
                                     required
                                     onchange="toggleCustomQuestion(this.value)"
-                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none"
                                 >
                                     <option value="" disabled {{ old('pregunta_secreta') ? '' : 'selected' }}>Seleccione una pregunta...</option>
                                     <option value="nombre_mascota" {{ old('pregunta_secreta') == 'nombre_mascota' ? 'selected' : '' }}>¿Cuál es el nombre de su primera mascota?</option>
@@ -231,7 +231,7 @@
                                     autocomplete="off"
                                     oninput="this.value = this.value.toLowerCase()"
                                     placeholder="Tu respuesta (en minúsculas)"
-                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
                             </div>
 
@@ -247,7 +247,7 @@
                                     value="{{ old('pregunta_personalizada') }}"
                                     oninput="this.value = this.value.toLowerCase()"
                                     placeholder="Ej: ¿cuál fue el nombre de mi primer profesor?"
-                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
                             </div>
                         </div>
