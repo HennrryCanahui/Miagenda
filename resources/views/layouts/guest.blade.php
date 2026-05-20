@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('body_class', 'bg-gray-50 dark:bg-blue-950')
+@section('body_class', 'bg-gray-50 dark:bg-slate-950')
 
 @section('layout')
     <div class="min-h-screen bg-gradient-to-b from-white via-blue-50/30 dark:from-slate-950 dark:via-slate-900/30 to-white dark:to-slate-950">

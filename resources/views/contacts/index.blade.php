@@ -11,12 +11,12 @@
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="text" name="search" value="{{ request('search') }}" class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-blue-900 border border-gray-200 dark:border-blue-800 rounded-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm" placeholder="Buscar por nombre o correo...">
+            <input type="text" name="search" value="{{ request('search') }}" class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm" placeholder="Buscar por nombre o correo...">
         </div>
     </div>
     <div class="flex items-center space-x-3">
         <!-- Filtro de Categorías -->
-        <select name="categoria_id" onchange="document.getElementById('filter-form').submit()" class="py-2.5 px-4 bg-white dark:bg-blue-900 border border-gray-200 dark:border-blue-800 rounded-xl text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm appearance-none cursor-pointer">
+        <select name="categoria_id" onchange="document.getElementById('filter-form').submit()" class="py-2.5 px-4 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm appearance-none cursor-pointer">
             <option value="">Todas las Categorías</option>
             @foreach($categorias as $cat)
                 <option value="{{ $cat->id }}" {{ request('categoria_id') == $cat->id ? 'selected' : '' }}>
@@ -36,14 +36,14 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     
     @forelse($contactos as $contacto)
-    <div class="bg-white dark:bg-blue-900 rounded-2xl p-6 border border-gray-100 dark:border-blue-800 shadow-xl shadow-gray-200/50 dark:shadow-none hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all group relative overflow-hidden">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-gray-100 dark:border-slate-700 shadow-xl shadow-gray-200/50 dark:shadow-none hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all group relative overflow-hidden">
         <!-- Badge de Categoría con Color -->
         <div class="absolute top-0 right-0 w-2 h-full" style="background-color: {{ $contacto->categoria->color ?? '#6366f1' }}"></div>
 
         <div class="flex items-start justify-between">
             <div class="flex items-center space-x-4">
                 @if($contacto->foto_path)
-                    <img src="{{ asset('storage/' . $contacto->foto_path) }}" alt="{{ $contacto->nombres }}" class="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-blue-800 shadow-sm">
+                    <img src="{{ asset('storage/' . $contacto->foto_path) }}" alt="{{ $contacto->nombres }}" class="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-700 shadow-sm">
                 @else
                     <div class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-sm" style="background-color: {{ $contacto->categoria->color ?? '#6366f1' }}">
                         {{ substr($contacto->nombres, 0, 1) }}
@@ -83,7 +83,7 @@
     </div>
     @empty
     <div class="col-span-full py-20 text-center">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 dark:bg-blue-900 mb-4 text-gray-400">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 dark:bg-slate-800 mb-4 text-gray-400">
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
         </div>
         <h3 class="text-xl font-bold text-gray-900 dark:text-white">No se encontraron contactos</h3>

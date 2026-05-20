@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('body_class', 'bg-gray-50 dark:bg-blue-950 overflow-hidden h-screen flex')
+@section('body_class', 'bg-gray-50 dark:bg-slate-950 overflow-hidden h-screen flex')
 
 @section('layout')
     
     <!-- Sidebar -->
-    <aside class="w-64 min-w-[16rem] max-w-[16rem] flex-none bg-white/70 backdrop-blur-xl dark:bg-blue-900 border-r border-indigo-100/50 dark:border-blue-800 flex flex-col transition-all duration-300 z-20">
+    <aside class="w-64 min-w-[16rem] max-w-[16rem] flex-none bg-white/70 backdrop-blur-xl dark:bg-slate-800 border-r border-indigo-100/50 dark:border-slate-700 flex flex-col transition-all duration-300 z-20">
         <!-- Logo -->
-        <div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-blue-800 bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-900 dark:to-blue-900">
+        <div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-slate-700 bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-900 dark:to-blue-900">
             <svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             <span class="text-xl font-bold text-white tracking-wider">MyAgenda</span>
         </div>
@@ -55,8 +55,8 @@
         </nav>
 
         <!-- User bottom with dropdown -->
-        <div class="p-4 border-t border-gray-200 dark:border-blue-800 relative" x-data="{ open: false }" @click.away="open = false">
-            <button @click="open = !open" class="flex items-center w-full px-2 py-2 text-sm rounded-xl hover:bg-gray-100 dark:hover:bg-blue-800 transition-colors cursor-pointer text-left focus:outline-none">
+        <div class="p-4 border-t border-gray-200 dark:border-slate-700 relative" x-data="{ open: false }" @click.away="open = false">
+            <button @click="open = !open" class="flex items-center w-full px-2 py-2 text-sm rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors cursor-pointer text-left focus:outline-none">
                 <img class="h-8 w-8 rounded-full object-cover border-2 border-indigo-500 flex-shrink-0" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->nombres ?? 'User') }}&background=6366f1&color=fff" alt="Avatar">
                 <div class="ml-3 flex-1 overflow-hidden">
                     <p class="text-sm font-medium text-gray-700 dark:text-gray-200 truncate">{{ auth()->user()->nombres ?? 'Usuario' }}</p>
@@ -76,21 +76,21 @@
                  x-transition:leave-end="transform opacity-0 translate-y-4"
                  class="absolute bottom-full left-0 w-full mb-2 px-4 z-50 origin-bottom"
                  style="display: none;">
-                <div class="bg-white dark:bg-blue-900 rounded-xl shadow-lg border border-gray-100 dark:border-blue-800 overflow-hidden py-1">
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 dark:border-slate-700 overflow-hidden py-1">
                     
                     <!-- Ver Perfil -->
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-blue-800 dark:hover:text-indigo-400 transition-colors flex items-center">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         Ver Perfil
                     </a>
                     
                     <!-- Editar Perfil -->
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-blue-800 dark:hover:text-indigo-400 transition-colors flex items-center">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         Ajustes de Cuenta
                     </a>
 
-                    <div class="h-px bg-gray-200 dark:bg-blue-800 my-1"></div>
+                    <div class="h-px bg-gray-200 dark:bg-slate-700 my-1"></div>
 
                     <!-- Cerrar Sesión -->
                     <form method="POST" action="{{ route('logout') }}">
@@ -106,13 +106,14 @@
     </aside>
 
     <!-- Main wrapper -->
-    <div class="flex-1 flex flex-col min-w-0 w-full overflow-hidden bg-gray-50 dark:bg-blue-950 relative">
+    <div class="flex-1 flex flex-col min-w-0 w-full overflow-hidden bg-gray-50 dark:bg-slate-950 relative">
         <!-- Decoraciones de fondo similares al login -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none"></div>
         
         <!-- Header -->
-        <header class="h-16 flex-shrink-0 bg-white/80 dark:bg-blue-900/80 backdrop-blur-md border-b border-gray-200 dark:border-blue-800 flex items-center justify-between px-6 z-20 sticky top-0">
+        <header class="h-16 flex-shrink-0 bg-[#070b13] border-b border-gray-800/40 flex items-center justify-between px-6 z-20 sticky top-0">
+  
             <div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">@yield('header', 'Dashboard')</h1>
             </div>
@@ -121,7 +122,7 @@
                 <!-- Notificaciones -->
                 <button class="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors relative focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-blue-950"></span>
+                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-slate-900"></span>
                 </button>
 
                 <!-- Theme Switcher -->
@@ -164,17 +165,17 @@
                          x-transition:leave="transition ease-in duration-75"
                          x-transition:leave-start="transform opacity-100 scale-100"
                          x-transition:leave-end="transform opacity-0 scale-95"
-                         class="absolute right-0 mt-2 w-36 bg-white dark:bg-blue-900 rounded-xl shadow-lg border border-gray-100 dark:border-blue-800 overflow-hidden py-1 z-50 origin-top-right"
+                         class="absolute right-0 mt-2 w-36 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 dark:border-slate-700 overflow-hidden py-1 z-50 origin-top-right"
                          style="display: none;">
-                        <button @click="setTheme('light')" :class="{ 'bg-indigo-50 dark:bg-blue-800/50 text-indigo-600 dark:text-indigo-400': theme === 'light' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-blue-800 transition-colors flex items-center">
+                        <button @click="setTheme('light')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'light' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             Claro
                         </button>
-                        <button @click="setTheme('dark')" :class="{ 'bg-indigo-50 dark:bg-blue-800/50 text-indigo-600 dark:text-indigo-400': theme === 'dark' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-blue-800 transition-colors flex items-center">
+                        <button @click="setTheme('dark')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'dark' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                             Oscuro
                         </button>
-                        <button @click="setTheme('system')" :class="{ 'bg-indigo-50 dark:bg-blue-800/50 text-indigo-600 dark:text-indigo-400': theme === 'system' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-blue-800 transition-colors flex items-center">
+                        <button @click="setTheme('system')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'system' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             Sistema
                         </button>

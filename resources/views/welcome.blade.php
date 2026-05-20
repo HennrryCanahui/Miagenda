@@ -4,14 +4,14 @@
 
 @section('content')
 <div class="flex items-center justify-center min-h-[80vh] px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-    <div class="w-full max-w-4xl p-10 sm:p-16 text-center bg-white dark:bg-blue-900 rounded-3xl shadow-2xl transition-colors duration-300 border border-gray-100 dark:border-blue-800 relative overflow-hidden">
+    <div class="w-full max-w-4xl p-10 sm:p-16 text-center bg-white dark:bg-slate-800 rounded-3xl shadow-2xl transition-colors duration-300 border border-gray-100 dark:border-slate-700 relative overflow-hidden">
         
         <!-- Decoracion de fondo -->
         <div class="absolute top-0 right-0 -tr w-64 h-64 bg-blue-500 opacity-5 dark:opacity-10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500 opacity-5 dark:opacity-10 rounded-full blur-3xl"></div>
 
         <div class="relative z-10">
-            <div class="mx-auto w-24 h-24 mb-8 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center shadow-inner">
+            <div class="mx-auto w-24 h-24 mb-8 bg-blue-100 dark:bg-slate-800/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center shadow-inner">
                 <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             

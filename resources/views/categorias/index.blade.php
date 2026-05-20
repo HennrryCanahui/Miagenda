@@ -16,7 +16,7 @@
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <input type="text" id="buscar-categoria" class="w-full pl-9 pr-4 py-2 bg-white dark:bg-blue-900 border border-gray-200 dark:border-blue-800 rounded-lg text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm" placeholder="Buscar categoría...">
+                <input type="text" id="buscar-categoria" class="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all shadow-sm" placeholder="Buscar categoría...">
             </div>
         </div>
 
@@ -39,10 +39,10 @@
             </div>
         @endif
 
-        <div class="bg-white dark:bg-blue-900 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-blue-800 overflow-hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700 overflow-hidden">
             <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200 dark:divide-blue-800">
-                    <thead class="bg-gray-50 dark:bg-blue-900/50">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
+                    <thead class="bg-gray-50 dark:bg-slate-800/50">
                         <tr>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Categoría</th>
                             <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tipo</th>
@@ -50,9 +50,9 @@
                             <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200 dark:divide-blue-800 bg-white dark:bg-blue-900" id="tabla-categorias">
+                    <tbody class="divide-y divide-gray-200 dark:divide-slate-700 bg-white dark:bg-slate-800" id="tabla-categorias">
                         @forelse($categorias as $categoria)
-                        <tr class="hover:bg-gray-50 dark:hover:bg-blue-800/50 transition-colors group categoria-row" data-categoria-nombre="{{ strtolower($categoria->nombre) }}">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors group categoria-row" data-categoria-nombre="{{ strtolower($categoria->nombre) }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center border" style="border-color: {{ $categoria->color }}80; background-color: {{ $categoria->color }}20; color: {{ $categoria->color }};">
@@ -79,7 +79,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if($categoria->es_predefinida)
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-slate-800/40 dark:text-blue-300">
                                         Sistema
                                     </span>
                                 @else
@@ -130,7 +130,7 @@
             </div>
             <!-- Paginación -->
             @if($categorias->hasPages())
-                <div class="bg-gray-50 dark:bg-blue-900/50 px-6 py-3 border-t border-gray-200 dark:border-blue-800">
+                <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-3 border-t border-gray-200 dark:border-slate-700">
                     {{ $categorias->links() }}
                 </div>
             @endif
@@ -139,8 +139,8 @@
 
     <!-- Columna Derecha: Formulario -->
     <div class="lg:col-span-1">
-        <div class="bg-white dark:bg-blue-900 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-blue-800 overflow-hidden sticky top-24">
-            <div class="p-6 border-b border-gray-100 dark:border-blue-800 bg-gradient-to-r from-gray-50 to-white dark:from-slate-800 dark:to-slate-800">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-slate-700 overflow-hidden sticky top-24">
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 bg-gradient-to-r from-gray-50 to-white dark:from-slate-800 dark:to-slate-800">
                 <h3 id="form-title" class="text-lg font-bold text-gray-900 dark:text-white">Crear Categoría</h3>
                 <p class="text-sm text-gray-500 dark:text-gray-400">Organiza tus contactos en grupos</p>
             </div>
@@ -152,15 +152,15 @@
                 <!-- Nombre -->
                 <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Nombre</label>
-                    <input type="text" name="nombre" id="form-nombre" required placeholder="Ej. Familia, Trabajo..." class="w-full px-4 py-2.5 bg-gray-50 dark:bg-blue-900 border border-gray-200 dark:border-blue-800 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                    <input type="text" name="nombre" id="form-nombre" required placeholder="Ej. Familia, Trabajo..." class="w-full px-4 py-2.5 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
                 </div>
 
                 <!-- Color -->
                 <div class="space-y-2">
                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300">Color</label>
                     <div class="flex items-center space-x-3">
-                        <input type="color" name="color" id="form-color" required value="#6366f1" class="h-10 w-14 p-1 rounded-lg cursor-pointer bg-white dark:bg-blue-900 border border-gray-200 dark:border-blue-800">
-                        <div class="h-10 w-full rounded-lg border border-gray-200 dark:border-blue-800 shadow-inner" id="color-preview" style="background-color: #6366f1;"></div>
+                        <input type="color" name="color" id="form-color" required value="#6366f1" class="h-10 w-14 p-1 rounded-lg cursor-pointer bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700">
+                        <div class="h-10 w-full rounded-lg border border-gray-200 dark:border-slate-700 shadow-inner" id="color-preview" style="background-color: #6366f1;"></div>
                     </div>
                 </div>
 
@@ -171,7 +171,7 @@
                     
                     <!-- Botón toggle -->
                     <button type="button" id="icon-picker-toggle" onclick="toggleIconPicker()" 
-                        class="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 dark:bg-blue-900 border border-gray-200 dark:border-blue-800 rounded-xl text-sm text-gray-600 dark:text-gray-400 hover:border-indigo-400 transition-all">
+                        class="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-sm text-gray-600 dark:text-gray-400 hover:border-indigo-400 transition-all">
                         <div class="flex items-center space-x-2">
                             <div id="selected-icon-preview" class="w-5 h-5 flex items-center justify-center">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -187,7 +187,7 @@
 
                     <!-- Picker colapsable -->
                     <div id="icon-picker-wrapper" class="hidden">
-                        <div class="grid grid-cols-6 gap-2 p-3 bg-gray-50 dark:bg-blue-900 rounded-xl border border-gray-200 dark:border-blue-800 max-h-48 overflow-y-auto" id="icon-picker">
+                        <div class="grid grid-cols-6 gap-2 p-3 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 max-h-48 overflow-y-auto" id="icon-picker">
                             <!-- Generado por JS -->
                         </div>
                     </div>
@@ -196,10 +196,10 @@
                 <!-- Separador -->
                 <div class="relative py-2">
                     <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                        <div class="w-full border-t border-gray-200 dark:border-blue-800"></div>
+                        <div class="w-full border-t border-gray-200 dark:border-slate-700"></div>
                     </div>
                     <div class="relative flex justify-center text-xs uppercase">
-                        <span class="bg-white dark:bg-blue-900 px-2 text-gray-500 font-bold">O sube tu imagen</span>
+                        <span class="bg-white dark:bg-slate-800 px-2 text-gray-500 font-bold">O sube tu imagen</span>
                     </div>
                 </div>
 
@@ -207,7 +207,7 @@
                 <div class="space-y-2">
                     <div class="relative group">
                         <input type="file" name="icono" id="form-icono" accept="image/*" class="hidden">
-                        <label for="form-icono" class="flex items-center justify-center w-full px-4 py-3 bg-gray-50 dark:bg-blue-900 border-2 border-dashed border-gray-300 dark:border-blue-800 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10 transition-all">
+                        <label for="form-icono" class="flex items-center justify-center w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border-2 border-dashed border-gray-300 dark:border-slate-700 rounded-xl cursor-pointer hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10 transition-all">
                             <div class="text-center">
                                 <svg class="mx-auto h-6 w-6 text-gray-400 group-hover:text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 <p class="mt-1 text-xs text-gray-500">Click para subir</p>
@@ -229,7 +229,7 @@
                     <button type="submit" id="form-submit" class="w-full py-3.5 px-4 rounded-xl font-bold text-white transition-all duration-300 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0">
                         Guardar Categoría
                     </button>
-                    <button type="button" onclick="resetForm()" class="w-full py-3 px-4 rounded-xl font-medium text-gray-600 dark:text-gray-400 bg-transparent hover:bg-gray-100 dark:hover:bg-blue-800 transition-colors">
+                    <button type="button" onclick="resetForm()" class="w-full py-3 px-4 rounded-xl font-medium text-gray-600 dark:text-gray-400 bg-transparent hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
                         Cancelar / Limpiar
                     </button>
                 </div>
@@ -243,16 +243,16 @@
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 transition-opacity bg-slate-900/60 backdrop-blur-sm" aria-hidden="true" onclick="cerrarModal()"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white dark:bg-blue-900 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div class="p-6 border-b border-gray-100 dark:border-blue-800 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white dark:from-slate-800 dark:to-slate-800">
+        <div class="inline-block align-bottom bg-white dark:bg-slate-800 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white dark:from-slate-800 dark:to-slate-800">
                 <h3 id="modal-titulo" class="text-xl font-bold text-gray-900 dark:text-white">Contactos</h3>
                 <button onclick="cerrarModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
             <div id="modal-contenido" class="p-6 max-h-[60vh] overflow-y-auto"></div>
-            <div class="bg-gray-50 dark:bg-blue-900/50 px-6 py-4 flex justify-end">
-                <button onclick="cerrarModal()" class="px-6 py-2.5 rounded-xl bg-white dark:bg-blue-800 border border-gray-200 dark:border-blue-700 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-blue-700 transition-all">
+            <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-4 flex justify-end">
+                <button onclick="cerrarModal()" class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-600 transition-all">
                     Cerrar
                 </button>
             </div>
@@ -438,7 +438,7 @@
                     let html = '<div class="space-y-3">';
                     data.contactos.forEach(c => {
                         html += `
-                            <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-blue-900/50 rounded-2xl border border-gray-100 dark:border-blue-800">
+                            <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-800/50 rounded-2xl border border-gray-100 dark:border-slate-700">
                                 <div class="flex items-center">
                                     <div class="h-10 w-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-sm">
                                         ${c.nombre.charAt(0).toUpperCase()}

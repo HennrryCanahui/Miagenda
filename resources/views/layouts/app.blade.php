@@ -35,7 +35,7 @@
         @yield('styles')
     </style>
 </head>
-<body class="font-sans antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 @yield('body_class', 'bg-gray-50 dark:bg-blue-950')">
+<body class="font-sans antialiased text-gray-900 dark:text-gray-100 transition-colors duration-300 @yield('body_class', 'bg-gray-50 dark:bg-slate-950')">
     
     @yield('layout')
 

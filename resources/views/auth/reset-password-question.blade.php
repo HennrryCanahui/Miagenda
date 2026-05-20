@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
     <div class="w-full max-w-5xl max-h-[90vh] overflow-y-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-blue-900 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-blue-800/50 backdrop-blur-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-slate-700/50 backdrop-blur-sm">
             
             <!-- Left Panel -->
             <div class="hidden lg:flex lg:flex-col lg:justify-center relative overflow-hidden bg-gradient-to-br from-indigo-900/90 via-blue-900/80 to-slate-900 backdrop-blur-xl border-r border-white/10 p-12 min-h-[500px]">
@@ -42,7 +42,7 @@
                     <input type="hidden" name="email" value="{{ $email }}">
 
                     <!-- Secret Question Display -->
-                    <div class="p-4 bg-indigo-50 dark:bg-blue-800/50 rounded-2xl border border-indigo-100 dark:border-blue-700">
+                    <div class="p-4 bg-indigo-50 dark:bg-slate-700/50 rounded-2xl border border-indigo-100 dark:border-slate-600">
                         <p class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">Tu pregunta:</p>
                         <p class="text-lg font-medium text-gray-900 dark:text-white">"{{ $pregunta }}"</p>
                     </div>
@@ -59,12 +59,12 @@
                             required 
                             autofocus
                             placeholder="Escribe tu respuesta aquí"
-                            class="w-full px-4 py-3 bg-gray-50 dark:bg-blue-800 border border-gray-300 dark:border-blue-700 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                         >
                     </div>
 
                     <!-- New Password Input -->
-                    <div class="space-y-2 pt-4 border-t border-gray-100 dark:border-blue-800">
+                    <div class="space-y-2 pt-4 border-t border-gray-100 dark:border-slate-700">
                         <label for="password" class="block text-sm font-semibold text-gray-700 dark:text-gray-300">
                             Nueva Contraseña
                         </label>
@@ -74,7 +74,7 @@
                             type="password" 
                             required 
                             placeholder="••••••••"
-                            class="w-full px-4 py-3 bg-gray-50 dark:bg-blue-800 border border-gray-300 dark:border-blue-700 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                         >
                     </div>
 
@@ -89,7 +89,7 @@
                             type="password" 
                             required 
                             placeholder="••••••••"
-                            class="w-full px-4 py-3 bg-gray-50 dark:bg-blue-800 border border-gray-300 dark:border-blue-700 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-2xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                         >
                     </div>
 

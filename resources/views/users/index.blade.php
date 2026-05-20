@@ -28,10 +28,10 @@
 </div>
 @endif
 
-<div class="bg-white/80 backdrop-blur-md dark:bg-blue-900 rounded-3xl shadow-xl shadow-indigo-500/10 dark:shadow-none border border-white/50 dark:border-blue-800 overflow-hidden">
+<div class="bg-white/80 backdrop-blur-md dark:bg-slate-800 rounded-3xl shadow-xl shadow-indigo-500/10 dark:shadow-none border border-white/50 dark:border-slate-700 overflow-hidden">
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-blue-800">
-            <thead class="bg-gray-50 dark:bg-blue-900/50">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
+            <thead class="bg-gray-50 dark:bg-slate-800/50">
                 <tr>
                     <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Usuario</th>
                     <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Rol</th>
@@ -40,9 +40,9 @@
                     <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100 dark:divide-blue-800 bg-white/50 dark:bg-blue-900">
+            <tbody class="divide-y divide-gray-100 dark:divide-slate-700 bg-white/50 dark:bg-slate-800">
                 @foreach($users as $user)
-                <tr class="hover:bg-gray-50 dark:hover:bg-blue-800/50 transition-colors group">
+                <tr class="hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors group">
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <img class="h-10 w-10 rounded-full object-cover border-2 border-indigo-200 dark:border-indigo-900" src="https://ui-avatars.com/api/?name={{ urlencode($user->nombres . ' ' . $user->apellidos) }}&background=random" alt="">
@@ -58,7 +58,7 @@
                             {{ $user->rol->nombre }}
                         </span>
                         @else
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-slate-800/40 dark:text-blue-300">
                             {{ $user->rol->nombre }}
                         </span>
                         @endif
