@@ -42,12 +42,12 @@
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700 overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-slate-700">
-                    <thead class="bg-gray-50 dark:bg-slate-900/50">
+                    <thead class="bg-gradient-to-r from-blue-600 to-cyan-500 dark:bg-none dark:bg-slate-900/50">
                         <tr>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Categoría</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tipo</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Contactos</th>
-                            <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Acciones</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Categoría</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Tipo</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Contactos</th>
+                            <th scope="col" class="px-6 py-4 text-right text-xs font-semibold text-white uppercase tracking-wider">Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-slate-700 bg-white dark:bg-slate-800" id="tabla-categorias">
@@ -140,9 +140,8 @@
     <!-- Columna Derecha: Formulario -->
     <div class="lg:col-span-1">
         <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-slate-700 overflow-hidden sticky top-24">
-            <div class="p-6 border-b border-gray-100 dark:border-slate-700 bg-gradient-to-r from-gray-50 to-white dark:from-slate-800 dark:to-slate-800">
-                <h3 id="form-title" class="text-lg font-bold text-gray-900 dark:text-white">Crear Categoría</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Organiza tus contactos en grupos</p>
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 bg-gradient-to-r from-blue-600 to-cyan-500">
+                <h3 id="form-title" class="text-lg font-bold text-white">Crear Categoría</h3>
             </div>
             
             <form id="categoria-form" action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-5">
