@@ -5,17 +5,17 @@
 @section('layout')
     
     <!-- Sidebar -->
-    <aside class="w-64 min-w-[16rem] max-w-[16rem] flex-none bg-white/70 backdrop-blur-xl dark:bg-slate-800 border-r border-indigo-100/50 dark:border-slate-700 flex flex-col transition-all duration-300 z-20">
+    <aside class="w-64 min-w-[16rem] max-w-[16rem] flex-none bg-white shadow-[1px_0_15px_rgba(0,0,0,0.03)] dark:shadow-none dark:bg-slate-800 border-r border-gray-100 dark:border-slate-700 flex flex-col transition-all duration-300 z-20">
         <!-- Logo -->
-        <div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-slate-700 bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-900 dark:to-blue-900">
-            <svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            <span class="text-xl font-bold text-white tracking-wider">MyAgenda</span>
+        <div class="h-16 flex items-center px-6 border-b border-gray-100 dark:border-slate-700 bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-indigo-900 dark:to-blue-900">
+            <svg class="w-8 h-8 text-white mr-3 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <span class="text-xl font-bold text-white tracking-wider drop-shadow-sm">MyAgenda</span>
         </div>
 
         <!-- Navegación -->
         <nav class="flex-1 overflow-y-auto no-scrollbar py-4 px-3 space-y-1">
-            <a href="{{ route('dashboard') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('dashboard') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400' : 'hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400' }}">
-                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('dashboard') ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <a href="{{ route('dashboard') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('dashboard') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
+                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('dashboard') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                 Inicio
             </a>
 
@@ -23,13 +23,13 @@
                 <p class="px-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Contactos</p>
             </div>
             
-            <a href="{{ route('contacts.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('contacts.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400' : 'hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400' }}">
-                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('contacts.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <a href="{{ route('contacts.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('contacts.*') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
+                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('contacts.*') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 Directorio
             </a>
 
-            <a href="{{ route('categorias.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('categorias.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400' : 'hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400' }}">
-                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('categorias.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+            <a href="{{ route('categorias.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('categorias.*') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
+                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('categorias.*') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                 Gestión de Categorías
             </a>
 
@@ -38,8 +38,8 @@
                 <p class="px-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Administración</p>
             </div>
 
-            <a href="{{ route('users.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('users.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400' : 'hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400' }}">
-                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('users.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <a href="{{ route('users.index') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('users.*') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
+                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('users.*') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 Usuarios y Roles
             </a>
             @endif
@@ -48,16 +48,16 @@
                 <p class="px-3 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sistema</p>
             </div>
 
-            <a href="{{ route('help.about') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('help.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400' : 'hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400' }}">
-                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('help.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <a href="{{ route('help.about') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('help.*') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
+                <svg class="w-5 h-5 mr-3 {{ request()->routeIs('help.*') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 Ayuda / Acerca de
             </a>
         </nav>
 
         <!-- User bottom with dropdown -->
-        <div class="p-4 border-t border-gray-200 dark:border-slate-700 relative" x-data="{ open: false }" @click.away="open = false">
-            <button @click="open = !open" class="flex items-center w-full px-2 py-2 text-sm rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors cursor-pointer text-left focus:outline-none">
-                <img class="h-8 w-8 rounded-full object-cover border-2 border-indigo-500 flex-shrink-0" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->nombres ?? 'User') }}&background=6366f1&color=fff" alt="Avatar">
+        <div class="p-4 border-t border-gray-100 dark:border-slate-700 relative" x-data="{ open: false }" @click.away="open = false">
+            <button @click="open = !open" class="flex items-center w-full px-2 py-2 text-sm rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors cursor-pointer text-left focus:outline-none">
+                <img class="h-8 w-8 rounded-full object-cover border-2 border-blue-500 dark:border-indigo-500 flex-shrink-0" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->nombres ?? 'User') }}&background=2563eb&color=fff" alt="Avatar">
                 <div class="ml-3 flex-1 overflow-hidden">
                     <p class="text-sm font-medium text-gray-700 dark:text-gray-200 truncate">{{ auth()->user()->nombres ?? 'Usuario' }}</p>
                     <p class="text-xs text-gray-500 dark:text-gray-400 truncate">{{ auth()->user()->rol->nombre ?? 'Estándar' }}</p>
@@ -79,13 +79,13 @@
                 <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 dark:border-slate-700 overflow-hidden py-1">
                     
                     <!-- Ver Perfil -->
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         Ver Perfil
                     </a>
                     
                     <!-- Editar Perfil -->
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-700 dark:hover:text-indigo-400 transition-colors flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         Ajustes de Cuenta
                     </a>
@@ -108,11 +108,11 @@
     <!-- Main wrapper -->
     <div class="flex-1 flex flex-col min-w-0 w-full overflow-hidden bg-gray-50 dark:bg-slate-950 relative">
         <!-- Decoraciones de fondo similares al login -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 dark:bg-indigo-500/10 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/10 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none"></div>
         
         <!-- Header -->
-        <header class="h-16 flex-shrink-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 flex items-center justify-between px-6 z-20 sticky top-0">
+        <header class="h-16 flex-shrink-0 bg-white/95 shadow-sm backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-6 z-20 sticky top-0 dark:bg-slate-900/80 dark:border-slate-800">
   
             <div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">@yield('header', 'Dashboard')</h1>
@@ -120,9 +120,9 @@
             
             <div class="flex items-center space-x-4 ml-auto">
                 <!-- Notificaciones -->
-                <button class="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors relative focus:outline-none">
+                <button class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors relative focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-slate-900"></span>
+                    <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-cyan-500 dark:bg-red-500 ring-2 ring-white dark:ring-slate-900"></span>
                 </button>
 
                 <!-- Theme Switcher -->
@@ -148,7 +148,7 @@
                             this.openTheme = false;
                         }
                     }" @click.away="openTheme = false">
-                    <button @click="openTheme = !openTheme" class="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors relative focus:outline-none flex items-center justify-center">
+                    <button @click="openTheme = !openTheme" class="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-indigo-400 transition-colors relative focus:outline-none flex items-center justify-center">
                         <!-- Icono claro -->
                         <svg x-show="theme === 'light'" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <!-- Icono oscuro -->
@@ -167,15 +167,15 @@
                          x-transition:leave-end="transform opacity-0 scale-95"
                          class="absolute right-0 mt-2 w-36 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-100 dark:border-slate-700 overflow-hidden py-1 z-50 origin-top-right"
                          style="display: none;">
-                        <button @click="setTheme('light')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'light' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
+                        <button @click="setTheme('light')" :class="{ 'bg-blue-50 dark:bg-slate-700/50 text-blue-600 dark:text-indigo-400': theme === 'light' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             Claro
                         </button>
-                        <button @click="setTheme('dark')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'dark' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
+                        <button @click="setTheme('dark')" :class="{ 'bg-blue-50 dark:bg-slate-700/50 text-blue-600 dark:text-indigo-400': theme === 'dark' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                             Oscuro
                         </button>
-                        <button @click="setTheme('system')" :class="{ 'bg-indigo-50 dark:bg-slate-700/50 text-indigo-600 dark:text-indigo-400': theme === 'system' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center">
+                        <button @click="setTheme('system')" :class="{ 'bg-blue-50 dark:bg-slate-700/50 text-blue-600 dark:text-indigo-400': theme === 'system' }" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             Sistema
                         </button>
