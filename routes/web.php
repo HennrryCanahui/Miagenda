@@ -31,8 +31,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/categorias/{categoria}', [App\Http\Controllers\CategoriaController::class, 'destroy'])->name('categorias.destroy');
     Route::get('/categorias/{categoria}/contactos', [App\Http\Controllers\CategoriaController::class, 'getContactos'])->name('categorias.contactos');
     
-    // Usuarios (Solo Administradores)
-    Route::resource('users', App\Http\Controllers\UserController::class)->middleware(['admin']);
+    // Usuarios (Solo Administradores, excepto edit y update para perfil propio)
+    Route::resource('users', App\Http\Controllers\UserController::class)->except(['edit', 'update'])->middleware(['admin']);
+    Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     
     // Ayuda
     Route::view('/help/about', 'help.about')->name('help.about');

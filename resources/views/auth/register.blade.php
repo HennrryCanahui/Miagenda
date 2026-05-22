@@ -1,8 +1,10 @@
 @extends('layouts.guest')
 
+@section('title', 'Registrarse')
+
 @section('content')
 <div class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-6xl max-h-[90vh] overflow-y-auto">
+    <div class="w-full max-w-6xl max-h-[90vh] ">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-0 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-slate-700/50">
             
             <!-- Left Panel - Info Section (Hidden on mobile) -->
@@ -21,33 +23,7 @@
                                 Comienza a organizar tu tiempo eficientemente. Tu productividad mejorará desde el primer día.
                             </p>
                         </div>
-<!--
-                        <div class="space-y-4 pt-4">
-                            <div class="flex flex-col sm:flex-row lg:flex-col items-center lg:items-start gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-                                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center flex-shrink-0 border border-indigo-500/30">
-                                    <svg class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                </div>
-                                <div class="text-center lg:text-left">
-                                    <p class="text-white font-semibold text-sm">Seguridad Avanzada</p>
-                                    <p class="text-blue-100/60 text-xs mt-1">Datos y preguntas protegidos con cifrado industrial.</p>
-                                </div>
-                            </div>
 
-                            <div class="flex flex-col sm:flex-row lg:flex-col items-center lg:items-start gap-4 p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-                                <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
-                                    <svg class="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <div class="text-center lg:text-left">
-                                    <p class="text-white font-semibold text-sm">Recuperación Simple</p>
-                                    <p class="text-blue-100/60 text-xs mt-1">Usa frases sencillas en minúsculas para recordar fácilmente.</p>
-                                </div>
-                            </div>
-                        </div>
--->
                         <div class="pt-8 border-t border-white/10">
                             <p class="text-sm text-blue-100/60 mb-3 text-center lg:text-left">¿Ya eres miembro?</p>
                             <div class="flex justify-center lg:justify-start">

@@ -18,11 +18,8 @@ Route::middleware('guest')->group(function () {
     Route::get('forgot-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])
         ->name('password.request');
 
-    Route::post('forgot-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showQuestionForm'])
+    Route::post('forgot-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'resetPassword'])
         ->name('password.email');
-
-    Route::post('reset-password-question', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'resetPassword'])
-        ->name('password.update.question');
 });
 
 Route::middleware('auth')->group(function () {

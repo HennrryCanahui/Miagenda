@@ -5,14 +5,14 @@
 
 @section('content')
 <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <div>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Modifica los datos del usuario en el sistema. Deja la contraseña en blanco si no deseas cambiarla.</p>
-    </div>
     <div class="flex items-center space-x-3">
-        <a href="{{ route('users.index') }}" class="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 dark:border-slate-600 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-300 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow-sm transition-all">
+        <a href="{{ auth()->user()->isAdmin() ? route('users.index') : route('dashboard') }}" class="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 dark:border-slate-600 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-300 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow-sm transition-all">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Volver
         </a>
+    </div>
+    <div>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Modifica los datos del usuario en el sistema. Deja la contraseña en blanco si no deseas cambiarla.</p>
     </div>
 </div>
 
@@ -64,15 +64,20 @@
                 </div>
                 
                 <!-- Rol -->
+                @if(auth()->user()->isAdmin())
                 <div>
                     <label for="rol_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Rol <span class="text-red-500">*</span></label>
-                    <select name="rol_id" id="rol_id" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
+                    <select name="rol_id" id="rol_id" {{ auth()->id() === $user->id ? 'disabled' : 'required' }} class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none {{ auth()->id() === $user->id ? 'opacity-60 cursor-not-allowed' : '' }}">
                         <option value="">Selecciona un rol</option>
                         @foreach($roles as $rol)
                             <option value="{{ $rol->id }}" {{ old('rol_id', $user->rol_id) == $rol->id ? 'selected' : '' }}>{{ $rol->nombre }}</option>
                         @endforeach
                     </select>
+                    @if(auth()->id() === $user->id)
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">No puedes modificar tu propio rol.</p>
+                    @endif
                 </div>
+                @endif
 
                 <!-- Password -->
                 <div>
@@ -87,13 +92,18 @@
                 </div>
                 
                 <!-- Estado -->
+                @if(auth()->user()->isAdmin())
                 <div>
                     <label for="estado" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estado <span class="text-red-500">*</span></label>
-                    <select name="estado" id="estado" required class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
+                    <select name="estado" id="estado" {{ auth()->id() === $user->id ? 'disabled' : 'required' }} class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none {{ auth()->id() === $user->id ? 'opacity-60 cursor-not-allowed' : '' }}">
                         <option value="1" {{ old('estado', $user->estado) == '1' ? 'selected' : '' }}>Activo</option>
                         <option value="0" {{ old('estado', $user->estado) == '0' ? 'selected' : '' }}>Inactivo</option>
                     </select>
+                    @if(auth()->id() === $user->id)
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">No puedes desactivar tu propia cuenta.</p>
+                    @endif
                 </div>
+                @endif
             </div>
 
             <div class="border-t border-gray-200 dark:border-slate-700 pt-6 mt-6">
@@ -107,8 +117,8 @@
                     
                     <!-- Respuesta Secreta -->
                     <div>
-                        <label for="respuesta_secreta" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Respuesta Secreta</label>
-                        <input type="text" name="respuesta_secreta" id="respuesta_secreta" value="{{ old('respuesta_secreta', $user->respuesta_secreta) }}" class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none">
+                        <label for="respuesta_secreta" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Respuesta Secreta (opcional)</label>
+                        <input type="text" name="respuesta_secreta" id="respuesta_secreta" class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none" placeholder="Dejar en blanco para mantener la actual">
                     </div>
                 </div>
             </div>

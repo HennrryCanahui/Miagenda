@@ -1,8 +1,10 @@
 @extends('layouts.guest')
 
+@section('title', 'Iniciar Sesión')
+
 @section('content')
 <div class="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+    <div class="w-full max-w-5xl max-h-[90vh] ">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200/50 dark:border-slate-700/50 backdrop-blur-sm">
             
             <!-- Left Panel - Info Section (Hidden on mobile) -->
@@ -100,15 +102,24 @@
                         <button 
                             type="button" 
                             onclick="togglePassword()" 
-                            class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 focus:outline-none transition-colors"
+                            class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition-colors"
                         >
                             <span id="password-toggle-icon">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <!-- ICONO 1: Ojo Abierto (Contraseña Visible) -->
+                                <svg id="eye-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                 </svg>
+
+                                <!-- ICONO 2: Ojo con Equis (Contraseña Oculta) - Puedes añadirle la clase 'hidden' por defecto si empieza oculta -->
+                                <svg id="eye-hidden" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <!-- Forma del ojo principal -->
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    <!-- Las líneas de la Equis (X) en el centro -->
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 10l4 4m0-4l-4 4"/>
+                                </svg>
                             </span>
-                        </button>
+</button>
                     </div>
                 </div>
 
@@ -154,15 +165,18 @@
 
 <script>
     function togglePassword() {
-        const passwordInput = document.getElementById("password");
-        const toggleIcon = document.getElementById("password-toggle-icon");
-        
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-4.803m5.596-3.856a3.375 3.375 0 11-4.753 4.753m4.753-4.753L3.596 3.596"/></svg>';
+        const passwordInput = document.getElementById('password');
+        const eyeOpen = document.getElementById('eye-open');
+        const eyeHidden = document.getElementById('eye-hidden');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeOpen.classList.add('hidden');
+            eyeHidden.classList.remove('hidden');
         } else {
-            passwordInput.type = "password";
-            toggleIcon.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>';
+            passwordInput.type = 'password';
+            eyeOpen.classList.remove('hidden');
+            eyeHidden.classList.add('hidden');
         }
     }
 
