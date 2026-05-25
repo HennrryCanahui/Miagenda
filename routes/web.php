@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'show'])->name('contacts.show');
     Route::get('/contacts/{contacto}/edit', [App\Http\Controllers\ContactoController::class, 'edit'])->name('contacts.edit');
     Route::put('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'update'])->name('contacts.update');
-    // La ruta de delete usará lógica más adelante
+    Route::delete('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'destroy'])->name('contacts.destroy');
     
     // Categorías
     Route::get('/categorias', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
