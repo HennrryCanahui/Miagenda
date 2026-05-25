@@ -15,11 +15,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 // Rutas temporales (Mockups) para la demostración de la Agenda
 Route::middleware(['auth'])->group(function () {
-    
-    // Contactos
+    // Exportación de Contactos
+    Route::get('/contacts/export/csv', [App\Http\Controllers\ContactoController::class, 'exportCsv'])->name('contacts.export.csv');
+    Route::get('/contacts/export/pdf', [App\Http\Controllers\ContactoController::class, 'exportPdf'])->name('contacts.export.pdf');
+
     Route::get('/contacts', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacts.index');
     Route::get('/contacts/create', [App\Http\Controllers\ContactoController::class, 'create'])->name('contacts.create');
     Route::post('/contacts', [App\Http\Controllers\ContactoController::class, 'store'])->name('contacts.store');
+    Route::get('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'show'])->name('contacts.show');
     Route::get('/contacts/{contacto}/edit', [App\Http\Controllers\ContactoController::class, 'edit'])->name('contacts.edit');
     Route::put('/contacts/{contacto}', [App\Http\Controllers\ContactoController::class, 'update'])->name('contacts.update');
     // La ruta de delete usará lógica más adelante

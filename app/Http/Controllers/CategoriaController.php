@@ -132,14 +132,15 @@ class CategoriaController extends Controller
 
         $contactos = $categoria->contactos()
             ->where('usuario_id', Auth::id())
-            ->get(['id', 'nombres', 'apellidos', 'email']);
+            ->get(['id', 'nombres', 'apellidos', 'email', 'foto_path']);
 
         // Mapear para que coincida con el JS del frontend (que espera 'nombre')
         $contactosFormatted = $contactos->map(function($contacto) {
             return [
                 'id' => $contacto->id,
                 'nombre' => $contacto->nombres . ' ' . $contacto->apellidos,
-                'email' => $contacto->email
+                'email' => $contacto->email,
+                'foto_path' => $contacto->foto_path ? asset('storage/' . $contacto->foto_path) : null
             ];
         });
 

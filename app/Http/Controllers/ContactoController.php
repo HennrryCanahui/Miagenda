@@ -7,6 +7,9 @@ use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ContactosExport;
 
 class ContactoController extends Controller
 {
@@ -22,7 +25,10 @@ class ContactoController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('nombres', 'like', "%{$search}%")
                   ->orWhere('apellidos', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhereHas('telefonos', function($subQuery) use ($search) {
+                      $subQuery->where('numero', 'like', "%{$search}%");
+                  });
             });
         }
 
@@ -38,6 +44,28 @@ class ContactoController extends Controller
         })->get();
 
         return view('contacts.index', compact('contactos', 'categorias'));
+    }
+
+    /**
+     * Export contacts to Excel/CSV.
+     */
+    public function exportCsv(Request $request)
+    {
+        $contactos = Contacto::where('usuario_id', Auth::id())->with('categoria', 'telefonos')->get();
+
+        return Excel::download(new ContactosExport($contactos), 'contactos_export_' . now()->format('Ymd_His') . '.xlsx');
+    }
+
+    /**
+     * Export contacts to PDF.
+     */
+    public function exportPdf(Request $request)
+    {
+        $contactos = Contacto::where('usuario_id', Auth::id())->with('categoria', 'telefonos')->get();
+
+        $pdf = Pdf::loadView('contacts.pdf', compact('contactos'));
+        
+        return $pdf->download("contactos_export_" . date('Ymd_His') . ".pdf");
     }
 
     /**
@@ -87,6 +115,23 @@ class ContactoController extends Controller
         }
 
         return redirect()->route('contacts.index')->with('success', 'Contacto creado con éxito.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Contacto $contacto)
+    {
+        if ($contacto->usuario_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $categorias = Categoria::where(function($q) {
+            $q->where('usuario_id', Auth::id())
+              ->orWhere('es_predefinida', true);
+        })->get();
+
+        return view('contacts.show', compact('contacto', 'categorias'));
     }
 
     /**

@@ -250,11 +250,6 @@
                 </button>
             </div>
             <div id="modal-contenido" class="p-6 max-h-[60vh] overflow-y-auto"></div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 px-6 py-4 flex justify-end">
-                <button onclick="cerrarModal()" class="px-6 py-2.5 rounded-xl bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-600 transition-all">
-                    Cerrar
-                </button>
-            </div>
         </div>
     </div>
 </div>
@@ -439,9 +434,12 @@
                         html += `
                             <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-slate-800/50 rounded-2xl border border-gray-100 dark:border-slate-700">
                                 <div class="flex items-center">
-                                    <div class="h-10 w-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-sm">
-                                        ${c.nombre.charAt(0).toUpperCase()}
-                                    </div>
+                                    ${c.foto_path ? 
+                                        `<img src="${c.foto_path}" alt="${c.nombre}" class="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700 shadow-sm">` :
+                                        `<div class="h-10 w-10 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-sm">
+                                            ${c.nombre.charAt(0).toUpperCase()}
+                                        </div>`
+                                    }
                                     <div class="ml-3">
                                         <p class="text-sm font-semibold text-gray-900 dark:text-white">${c.nombre}</p>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">${c.email || 'Sin correo'}</p>
