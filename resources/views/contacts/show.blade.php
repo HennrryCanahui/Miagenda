@@ -6,9 +6,9 @@
 @section('content')
 <div class="max-w-4xl mx-auto">
     
-    <div class="mb-6 flex items-center justify-between">
-        <a href="{{ route('contacts.index') }}" class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+    <div class="flex items-center space-x-3 mb-6">
+        <a href="{{ route('contacts.index') }}" class="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 dark:border-slate-600 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-300 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-700 shadow-sm transition-all">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Volver al Directorio
         </a>
     </div>
@@ -90,9 +90,6 @@
 
                     <!-- Botones -->
                     <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-100 dark:border-slate-700">
-                        <a href="{{ route('contacts.index') }}" class="px-6 py-2.5 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
-                            Volver
-                        </a>
                         <a href="{{ route('contacts.edit', $contacto->id) }}" class="px-6 py-2.5 rounded-xl font-medium text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 shadow-lg shadow-indigo-500/30 transition-all hover:-translate-y-0.5">
                             Editar Contacto
                         </a>

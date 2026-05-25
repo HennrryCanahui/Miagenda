@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
-@section('title', 'Acerca de')
-@section('header', 'Ayuda y Soporte')
+@section('title', 'Acerca del Sistema')
+@section('header', 'Acerca del Sistema')
 
 @section('content')
 <div class="max-w-3xl mx-auto mt-8">
@@ -33,19 +33,21 @@
                         <dl class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                             <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Versión:</dt>
-                                <dd>1.0.0 (BETA Demo)</dd>
+                                <dd class="text-right">1.0.x</dd>
                             </div>
                             <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Framework:</dt>
-                                <dd>Laravel 11.x</dd>
+                                <dd class="text-right">Laravel 13.3.0</dd>
                             </div>
                             <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
                                 <dt class="font-medium text-gray-700 dark:text-gray-300">Estilos:</dt>
-                                <dd>Tailwind CSS 3</dd>
+                                <dd class="text-right">Tailwind CSS 3.4.19</dd>
                             </div>
-                            <div class="flex justify-between border-b border-gray-100 dark:border-slate-700 pb-2">
-                                <dt class="font-medium text-gray-700 dark:text-gray-300">SO Soportados:</dt>
-                                <dd>Linux, FreeBSD, Windows, macOS</dd>
+                            <div class="flex justify-between items-start border-b border-gray-100 dark:border-slate-700 pb-2 gap-4">
+                                <dt class="font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">SO Soportados:</dt>
+                                <dd class="text-right text-xs sm:text-sm pl-4 breakdown-words">
+                                    Linux, Windows, MacOS, Android, iOS
+                                </dd>
                             </div>
                         </dl>
                     </div>
@@ -70,7 +72,19 @@
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-5 h-5 text-emerald-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-sm text-gray-600 dark:text-gray-400">Interfaz adaptable (Oscuro/Claro)</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Exportación de contactos a formatos Excel y PDF</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-emerald-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Búsqueda y filtrado de contactos en tiempo real</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-emerald-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Autenticación segura con encriptación reversible</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-emerald-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Interfaz adaptable dinámica (Oscuro/Claro/Sistema)</span>
                             </li>
                         </ul>
                     </div>
@@ -79,8 +93,8 @@
 
             <div class="mt-10 pt-6 border-t border-gray-100 dark:border-slate-700 text-center">
                 <p class="text-xs text-gray-500 dark:text-gray-400">
-                    &copy; {{ date('Y') }} MyAgenda. Todos los derechos reservados.<br>
-                    Desarrollado como demostración de maquetación y diseño de interfaces.
+                    &copy; {{ date('Y') }} MyAgenda. Todos los derechos reservados.<br><br>
+                    Desarrollado por: HENNRRY GEOVANNI CANAHUI GOMEZ 
                 </p>
             </div>
 

@@ -50,7 +50,7 @@
 
             <a href="{{ route('help.about') ?? '#' }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl group transition-colors {{ request()->routeIs('help.*') ? 'bg-blue-50/80 border border-blue-100/50 shadow-sm dark:border-transparent dark:shadow-none dark:bg-indigo-500/10 text-blue-700 dark:text-indigo-400' : 'hover:bg-gray-50 border border-transparent dark:hover:bg-indigo-500/10 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-indigo-400' }}">
                 <svg class="w-5 h-5 mr-3 {{ request()->routeIs('help.*') ? 'text-blue-600 dark:text-indigo-400' : 'text-gray-400 group-hover:text-blue-500 dark:group-hover:text-indigo-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Ayuda / Acerca de
+                Acerca del Sistema
             </a>
         </nav>
 
