@@ -1,10 +1,10 @@
-# MyAgenda 📔
+# MyAgenda 
 
 Un sistema de gestión de contactos elegante, rápido y minimalista construido sobre las últimas tecnologías web. Diseñado para ofrecer una experiencia de usuario fluida con una interfaz moderna y completamente responsiva.
 
 ---
 
-## ✨ Características Principales
+##  Características Principales
 
 - 🌓 **Tema Adaptable Dinámico:** Soporte completo e integrado para modo Claro, Oscuro y configuración nativa del Sistema.
 - 👥 **Gestión de Contactos:** Directorio completo que soporta fotos de perfil personalizadas, información de contacto detallada, teléfonos y correos.
@@ -16,11 +16,11 @@ Un sistema de gestión de contactos elegante, rápido y minimalista construido s
 
 ---
 
-## 🛠️ Stack Tecnológico
+##  Stack Tecnológico
 
 **Backend:**
-* PHP 8+
-* Laravel 13.x
+* PHP 8.4.21
+* Laravel 13.3.0
 
 **Frontend:**
 * HTML5 & CSS3
@@ -33,7 +33,7 @@ Un sistema de gestión de contactos elegante, rápido y minimalista construido s
 
 ---
 
-## 🚀 Instalación y Despliegue
+##  Instalación y Despliegue
 
 Sigue estos pasos para levantar el entorno de desarrollo local:
 
@@ -80,4 +80,3 @@ Sigue estos pasos para levantar el entorno de desarrollo local:
 
 Construido y mantenido por **Hennrry Geovanni Canahui Gomez**.
 
-*Desarrollado como demostración técnica de maquetación, diseño de interfaces de usuario (UI/UX) y estructuración backend.*
