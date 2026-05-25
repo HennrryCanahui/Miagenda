@@ -16,6 +16,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/storage/categorias/*
+/public/storage/contactos/*
 /storage/*.key
 /storage/pail
 /vendor
@@ -23,3 +25,4 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
