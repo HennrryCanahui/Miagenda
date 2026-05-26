@@ -60,7 +60,7 @@ class UserController extends Controller
             'respuesta_secreta' => $respuestaHash,
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('users.index')->with('success', '¡Genial! El usuario ha sido registrado correctamente.');
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
     {
         // Capa de verificación: Solo el propio usuario o un administrador puede editar
         if (!auth()->user()->isAdmin() && auth()->id() !== $user->id) {
-            abort(403, 'No tienes permiso para editar este perfil.');
+            abort(403, 'Ups, parece que no tienes permiso para modificar este perfil.');
         }
 
         $roles = Rol::all();
@@ -104,7 +104,7 @@ class UserController extends Controller
     {
         // Capa de verificación: Solo el propio usuario o un administrador puede actualizar
         if (!auth()->user()->isAdmin() && auth()->id() !== $user->id) {
-            abort(403, 'No tienes permiso para actualizar este perfil.');
+            abort(403, 'Ups, parece que no tienes permiso para actualizar este perfil.');
         }
 
         // Reglas base
@@ -153,9 +153,9 @@ class UserController extends Controller
         $user->update($data);
 
         if (auth()->user()->isAdmin()) {
-            return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
+            return redirect()->route('users.index')->with('success', '¡Perfecto! Los datos del usuario han sido actualizados.');
         } else {
-            return redirect()->route('dashboard')->with('success', 'Perfil actualizado exitosamente.');
+            return redirect()->route('dashboard')->with('success', '¡Perfecto! Tu perfil se ha actualizado correctamente.');
         }
     }
 
@@ -165,12 +165,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if (auth()->id() === $user->id) {
-            return redirect()->route('users.index')->with('error', 'No puedes eliminar tu propio usuario.');
+            return redirect()->route('users.index')->with('error', 'No puedes desactivar tu propia cuenta. Si necesitas hacerlo, contacta a otro administrador.');
         }
 
         // En lugar de borrar de la base de datos, simplemente lo desactivamos. 
         $user->update(['estado' => 0]);
 
-        return redirect()->route('users.index')->with('success', 'Usuario desactivado exitosamente.');
+        return redirect()->route('users.index')->with('success', 'El usuario ha sido desactivado sin problemas.');
     }
 }

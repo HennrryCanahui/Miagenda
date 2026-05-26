@@ -42,7 +42,7 @@ class CategoriaController extends Controller
             ->exists();
 
         if ($existe) {
-            return back()->withErrors(['nombre' => 'Ya tienes una categoría con este nombre.']);
+            return back()->withErrors(['nombre' => 'Ya tienes una categoría guardada con este nombre. Intenta con uno diferente.']);
         }
 
         $data = $request->all();
@@ -58,7 +58,7 @@ class CategoriaController extends Controller
 
         Categoria::create($data);
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría creada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', '¡Genial! La categoría se ha guardado correctamente.');
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoriaController extends Controller
     {
         // No permitir editar categorías predefinidas o de otros usuarios
         if ($categoria->es_predefinida || $categoria->usuario_id !== Auth::id()) {
-            return back()->withErrors(['auth' => 'No tienes permiso para editar esta categoría.']);
+            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece o no se puede modificar.']);
         }
 
         $request->validate([
@@ -97,7 +97,7 @@ class CategoriaController extends Controller
 
         $categoria->update($data);
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', '¡Perfecto! Los cambios de la categoría se han guardado.');
     }
 
     /**
@@ -107,7 +107,7 @@ class CategoriaController extends Controller
     {
         // No permitir eliminar categorías predefinidas o de otros usuarios
         if ($categoria->es_predefinida || $categoria->usuario_id !== Auth::id()) {
-            return back()->withErrors(['auth' => 'No tienes permiso para eliminar esta categoría.']);
+            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece o no se puede borrar.']);
         }
 
         // Eliminar icono si existe y es un archivo
@@ -117,7 +117,7 @@ class CategoriaController extends Controller
 
         $categoria->delete();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría eliminada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', 'La categoría ha sido eliminada sin problemas.');
     }
 
     /**
@@ -127,7 +127,7 @@ class CategoriaController extends Controller
     {
         // Verificar que la categoría pertenezca al usuario o sea predefinida
         if (!$categoria->es_predefinida && $categoria->usuario_id !== Auth::id()) {
-            return response()->json(['success' => false, 'message' => 'No autorizado'], 403);
+            return response()->json(['success' => false, 'message' => 'Ups, parece que no tienes permiso para ver esto'], 403);
         }
 
         $contactos = $categoria->contactos()

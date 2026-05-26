@@ -114,7 +114,7 @@ class ContactoController extends Controller
             ]);
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contacto creado con éxito.');
+        return redirect()->route('contacts.index')->with('success', '¡Genial! El contacto se ha guardado correctamente.');
     }
 
     /**
@@ -123,7 +123,7 @@ class ContactoController extends Controller
     public function show(Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
-            abort(403);
+            abort(403, 'Ups, parece que este contacto no te pertenece o no tienes permiso para verlo.');
         }
 
         $categorias = Categoria::where(function($q) {
@@ -140,7 +140,7 @@ class ContactoController extends Controller
     public function edit(Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
-            abort(403);
+            abort(403, 'Ups, parece que este contacto no te pertenece o no tienes permiso para editarlo.');
         }
 
         $categorias = Categoria::where(function($q) {
@@ -157,7 +157,7 @@ class ContactoController extends Controller
     public function update(Request $request, Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
-            abort(403);
+            abort(403, 'Ups, parece que este contacto no te pertenece o no tienes permiso para actualizarlo.');
         }
 
         $request->validate([
@@ -190,7 +190,7 @@ class ContactoController extends Controller
             $telefono->save();
         }
 
-        return redirect()->route('contacts.index')->with('success', 'Contacto actualizado con éxito.');
+        return redirect()->route('contacts.index')->with('success', '¡Perfecto! Los cambios del contacto se han guardado.');
     }
 
     /**
@@ -199,7 +199,7 @@ class ContactoController extends Controller
     public function destroy(Contacto $contacto)
     {
         if ($contacto->usuario_id !== Auth::id()) {
-            abort(403);
+            abort(403, 'Ups, parece que este contacto no te pertenece o no tienes permiso para eliminarlo.');
         }
 
         if ($contacto->foto_path && Storage::disk('public')->exists($contacto->foto_path)) {
@@ -208,6 +208,6 @@ class ContactoController extends Controller
 
         $contacto->delete();
 
-        return redirect()->route('contacts.index')->with('success', 'Contacto eliminado con éxito.');
+        return redirect()->route('contacts.index')->with('success', 'El contacto ha sido eliminado sin problemas.');
     }
 }

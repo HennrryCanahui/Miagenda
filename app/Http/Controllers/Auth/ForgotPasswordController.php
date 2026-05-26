@@ -42,7 +42,7 @@ class ForgotPasswordController extends Controller
         if (RateLimiter::tooManyAttempts($key, 3)) {
             $seconds = RateLimiter::availableIn($key);
             throw ValidationException::withMessages([
-                'email' => ['Demasiados intentos fallidos. Por favor, intenta de nuevo en ' . $seconds . ' segundos.'],
+                'email' => ['Ups, has intentado muchas veces. Por favor, espera ' . $seconds . ' segundos y vuelve a intentar.'],
             ]);
         }
 
@@ -75,14 +75,14 @@ class ForgotPasswordController extends Controller
             RateLimiter::hit($key, 60); // 1 minute lockout after 3 fails
             
             throw ValidationException::withMessages([
-                'respuesta' => ['La pregunta o respuesta secreta proporcionada es incorrecta.']
+                'respuesta' => ['Ups, parece que la pregunta o respuesta secreta no son correctas. Por favor, revisa e intenta de nuevo.']
             ]);
         }
 
         // Evitar que la nueva contraseña sea la misma que la actual
         if (Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'password' => ['La nueva contraseña no puede ser igual a tu contraseña actual. Por razones de seguridad, elige una contraseña diferente.']
+                'password' => ['Por seguridad, tu nueva contraseña debe ser diferente a la que ya usabas. Intenta con otra diferente.']
             ]);
         }
 
@@ -92,6 +92,6 @@ class ForgotPasswordController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('login')->with('status', 'Tu contraseña ha sido restablecida con éxito.');
+        return redirect()->route('login')->with('status', '¡Listo! Tu contraseña ha sido cambiada y ahora puedes iniciar sesión con ella.');
     }
 }
