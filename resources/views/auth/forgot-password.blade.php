@@ -283,9 +283,24 @@
                     const contentType = response.headers.get("content-type");
                     if (contentType && contentType.includes("application/json")) {
                         const data = await response.json();
-                        showErrors(data.errors || data.message || 'Error al restablecer contraseña');
+                        
+                        let errorToShow = data.errors;
+                        
+                        if (!errorToShow) {
+                            if (data.message && data.message.includes('Too Many Attempts')) {
+                                errorToShow = 'Ups, has intentado muchas veces. Por favor, espera un momento y vuelve a intentar.';
+                            } else if (data.message && data.message.includes('The given data was invalid')) {
+                                errorToShow = 'Revisa que los datos ingresados sean correctos.';
+                            } else if (data.message && data.message.includes('Server Error')) {
+                                errorToShow = 'Hubo un problema en el servidor. Por favor, intenta de nuevo más tarde.';
+                            } else {
+                                errorToShow = data.message || 'Ups, algo salió mal al restablecer tu contraseña. Intenta de nuevo.';
+                            }
+                        }
+                        
+                        showErrors(errorToShow);
                     } else {
-                        showErrors('Error en el servidor. Por favor intenta de nuevo.');
+                        showErrors('Ups, hubo un error de conexión con el servidor. Por favor intenta de nuevo.');
                     }
                     
                     attempts++;
@@ -301,7 +316,7 @@
             } catch (error) {
                 console.error('Reset error:', error);
                 if (error instanceof TypeError) {
-                    showErrors('Error de conexión. Por favor revisa tu internet.');
+                    showErrors('Ups, parece que hay un problema de conexión. Por favor revisa tu internet e intenta de nuevo.');
                 } else {
                     window.location.href = '{{ route("login") }}';
                 }

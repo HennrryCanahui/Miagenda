@@ -75,6 +75,8 @@
                                 type="text" 
                                 value="{{ old('nombres') }}" 
                                 required 
+                                oninvalid="this.setCustomValidity('Por favor, ingresa tu nombre')"
+                                oninput="this.setCustomValidity('')"
                                 autofocus
                                 placeholder="Juan"
                                 class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
@@ -92,6 +94,8 @@
                                 type="text" 
                                 value="{{ old('apellidos') }}" 
                                 required
+                                oninvalid="this.setCustomValidity('Por favor, ingresa tu apellido')"
+                                oninput="this.setCustomValidity('')"
                                 placeholder="Pérez"
                                 class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                             >
@@ -115,6 +119,8 @@
                                 type="email" 
                                 value="{{ old('email') }}" 
                                 required
+                                oninvalid="this.setCustomValidity('Por favor, ingresa un correo válido')"
+                                oninput="this.setCustomValidity('')"
                                 placeholder="correo@ejemplo.com"
                                 class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                             >
@@ -139,6 +145,8 @@
                                     name="password" 
                                     type="password" 
                                     required
+                                    oninvalid="this.setCustomValidity('Por favor, ingresa una contraseña')"
+                                    oninput="this.setCustomValidity('')"
                                     placeholder="••••••••"
                                     class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
@@ -161,6 +169,8 @@
                                     name="password_confirmation" 
                                     type="password" 
                                     required
+                                    oninvalid="this.setCustomValidity('Por favor, confirma tu contraseña')"
+                                    oninput="this.setCustomValidity('')"
                                     placeholder="••••••••"
                                     class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
@@ -182,6 +192,8 @@
                                     id="pregunta_secreta" 
                                     name="pregunta_secreta" 
                                     required
+                                    oninvalid="this.setCustomValidity('Por favor, selecciona una pregunta secreta')"
+                                    oninput="this.setCustomValidity('')"
                                     onchange="toggleCustomQuestion(this.value)"
                                     class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all focus:outline-none"
                                 >
@@ -204,8 +216,9 @@
                                     name="respuesta_secreta" 
                                     type="password" 
                                     required 
+                                    oninvalid="this.setCustomValidity('Por favor, ingresa tu respuesta')"
+                                    oninput="this.value = this.value.toLowerCase(); this.setCustomValidity('')"
                                     autocomplete="off"
-                                    oninput="this.value = this.value.toLowerCase()"
                                     placeholder="Tu respuesta (en minúsculas)"
                                     class="w-full px-4 py-3 bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none"
                                 >
@@ -236,6 +249,8 @@
                             if (value === 'personalizado') {
                                 container.classList.remove('hidden');
                                 input.setAttribute('required', 'required');
+                                input.setAttribute('oninvalid', "this.setCustomValidity('Por favor, ingresa tu pregunta')");
+                                input.setAttribute('oninput', "this.value = this.value.toLowerCase(); this.setCustomValidity('')");
                                 input.focus();
                             } else {
                                 container.classList.add('hidden');
