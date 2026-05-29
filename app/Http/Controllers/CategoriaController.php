@@ -66,9 +66,9 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        // No permitir editar categorías predefinidas o de otros usuarios
-        if ($categoria->es_predefinida || $categoria->usuario_id !== Auth::id()) {
-            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece o no se puede modificar.']);
+        // No permitir editar categorías de otros usuarios
+        if ($categoria->usuario_id !== Auth::id()) {
+            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece.']);
         }
 
         $request->validate([
@@ -105,9 +105,9 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        // No permitir eliminar categorías predefinidas o de otros usuarios
-        if ($categoria->es_predefinida || $categoria->usuario_id !== Auth::id()) {
-            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece o no se puede borrar.']);
+        // No permitir eliminar categorías de otros usuarios
+        if ($categoria->usuario_id !== Auth::id()) {
+            return back()->withErrors(['auth' => 'Ups, parece que esta categoría no te pertenece.']);
         }
 
         // Eliminar icono si existe y es un archivo
