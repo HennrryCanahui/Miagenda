@@ -34,19 +34,25 @@ class CategoriasContactosSeeder extends Seeder
 
         $categoriasGuardadas = [];
         foreach ($categorias as $cat) {
-            // Usamos firstOrCreate para evitar errores si la categoría ya existe
-            $categoriasGuardadas[] = Categoria::firstOrCreate(
-                [
-                    'usuario_id' => $user->id,
-                    'nombre'     => $cat['nombre'],
-                ],
-                [
+            // Usamos firstOrNew con withTrashed para evitar errores de restricción única
+            $categoria = Categoria::withTrashed()->firstOrNew([
+                'usuario_id' => $user->id,
+                'nombre'     => $cat['nombre'],
+            ]);
+
+            if (!$categoria->exists) {
+                $categoria->fill([
                     'color'          => $cat['color'],
                     'icono'          => $cat['icono'],
                     'es_predefinida' => $cat['es_predefinida'],
                     'descripcion'    => 'Categoría predefinida de ' . $cat['nombre'],
-                ]
-            );
+                ]);
+                $categoria->save();
+            } else if ($categoria->trashed()) {
+                $categoria->restore(); // Si existe pero está eliminada lógicamente, la restauramos
+            }
+            
+            $categoriasGuardadas[] = $categoria;
         }
 
         // Crear 15 contactos aleatorios usando Faker
